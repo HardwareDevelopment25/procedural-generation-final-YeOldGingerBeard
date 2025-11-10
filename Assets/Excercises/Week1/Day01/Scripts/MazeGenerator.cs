@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class MazeGenerator : MonoBehaviour
@@ -7,7 +8,7 @@ public class MazeGenerator : MonoBehaviour
     public int size = 10, seed = 0;
     public GameObject wall, floor;
     private bool[,] maze;
-
+    public bool is2DOnly = false;
 
     void Start()
     {
@@ -15,9 +16,29 @@ public class MazeGenerator : MonoBehaviour
         maze = new bool[size,size];// make a new maze of falses
 
         GenerateMaze();
-        DrawMaze();
-    }
+        MeshRenderer mr;
+        if(is2DOnly)
+        {
+            mr = GetComponent<MeshRenderer>();
+            //mr.material.mainTexture = ProcGenTools.RenderBoolArrayAsTexture(maze);
+            mr.sharedMaterial.mainTexture = ProcGenTools.RenderBoolArrayAsTexture(maze);
 
+        }
+        else
+        {
+            DrawMazeIn3D();
+        }
+        
+
+
+
+    }
+    public void GenerateImageOfNewMaze()
+    {
+        // just incase 3D generation was on, I dont want thousands of mazes stacked.
+        is2DOnly = true;
+        Start();
+    }
 
 
     private void GenerateMaze()
@@ -82,7 +103,7 @@ public class MazeGenerator : MonoBehaviour
 
     }
 
-    void DrawMaze()
+    void DrawMazeIn3D()
     {
         // Loop through all the rows and columns for this grid looking to see what is
         // true (floor) false ( wall )
