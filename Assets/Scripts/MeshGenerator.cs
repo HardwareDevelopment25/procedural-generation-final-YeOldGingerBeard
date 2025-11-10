@@ -13,8 +13,8 @@ public static class MeshGenerator
 
 		MeshData meshdata = new MeshData(width, height);
 		int vertexIndex = 0;
-
-		for (int y = 0; y < height; y++)
+        int verticesPerLine = (width); // subtrack one from edge
+        for (int y = 0; y < height; y++)
 		{
 			for (int x = 0; x < width; x++)
 			{
@@ -23,12 +23,15 @@ public static class MeshGenerator
 
 				meshdata.uvs[vertexIndex] = new Vector2(x / (float)width, y / (float)height);
 
-				// finally lets create those triangle faces
+				
+                // finally lets create those triangle faces
 
-				if(x<width-1 && y< height -1)// We are making a square of 2x Tris
+                if (x<width-1 && y< height -1)// We are making a square of 2x Tris
 				{
-					meshdata.AddTriangle(vertexIndex,vertexIndex+width+1,vertexIndex+width);
-                    meshdata.AddTriangle(vertexIndex + width +1, vertexIndex, vertexIndex+1);
+					          //             i              i+W+1                             i+1
+					meshdata.AddTriangle(vertexIndex,vertexIndex+ verticesPerLine + 1,vertexIndex+ verticesPerLine);
+					//                         i+w+1                           i             i+1
+                    meshdata.AddTriangle(vertexIndex + verticesPerLine + 1, vertexIndex, vertexIndex+1);
                 }
 				vertexIndex++;
 			}
@@ -49,7 +52,7 @@ public class MeshData
 	{
 		vertices = new Vector3[meshWidth * meshHeight];
 		//I dont want to fall off the grid into invalid space
-		triangles = new int[(meshWidth-1) * (meshHeight-1)];
+		triangles = new int[(meshWidth) * (meshHeight) * 6];
 		uvs = new Vector2[meshWidth * meshHeight];
 	}
 	public void AddTriangle(int a, int b , int c)
@@ -60,13 +63,15 @@ public class MeshData
 		trianglesIndex+=3;
 	}
 
-	public Mesh CreateMesh() // here we make the mesh
+	public  Mesh CreateMesh() // here we make the mesh
 	{
 		Mesh mesh = new Mesh();
 		mesh.vertices = vertices;
 		mesh.triangles = triangles;
 		mesh.uv = uvs;
 		mesh.RecalculateNormals();
+
 		return mesh;
 	}
+
 }

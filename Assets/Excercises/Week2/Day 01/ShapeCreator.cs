@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class ShapeCreator : MonoBehaviour
 {
-    public float sizeOfShape = 1.0f;
+    public int SizeOfGrid = 128;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -11,9 +12,19 @@ public class ShapeCreator : MonoBehaviour
         MeshRenderer mr = this.AddComponent<MeshRenderer>();
 
         Material mat = new Material(Shader.Find("Unlit/Texture"));
+      
+
+        float[,] noiseMap = NoiseMapGenerator.GenerateNoiseMap(SizeOfGrid, SizeOfGrid, 10, 1, 5, 1, 0, Vector2.zero);
+
+       MeshData md =  MeshGenerator.GenerateTerrain(noiseMap, 10f);
+        mf.sharedMesh = md.CreateMesh();
+
+        mat.mainTexture = ProcGenTools.RenderNoiseAsGreyTexture(noiseMap);
         mr.material = mat;
-        mf.mesh = ProcGenTools.makeTriangle(sizeOfShape);
+        // then worry about slapping onthe texture.
     }
+   
+
 
 
 }
