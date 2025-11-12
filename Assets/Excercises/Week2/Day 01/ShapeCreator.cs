@@ -4,6 +4,11 @@ using UnityEngine;
 public class ShapeCreator : MonoBehaviour
 {
     public int SizeOfGrid = 128;
+
+    [Range(1, 6)]
+    public int levelOfDetail = 1;
+    public AnimationCurve AnimationCurve;
+    public float heightMult = 10f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,7 +21,7 @@ public class ShapeCreator : MonoBehaviour
 
         float[,] noiseMap = NoiseMapGenerator.GenerateNoiseMap(SizeOfGrid, SizeOfGrid, 10, 1, 5, 1, 0, Vector2.zero);
 
-       MeshData md =  MeshGenerator.GenerateTerrain(noiseMap, 10f);
+       MeshData md =  MeshGenerator.GenerateTerrainMesh(noiseMap, heightMult, AnimationCurve,levelOfDetail);
         mf.sharedMesh = md.CreateMesh();
 
         mat.mainTexture = ProcGenTools.RenderNoiseAsGreyTexture(noiseMap);

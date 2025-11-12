@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c11d6a518828194485f9233b54cb5d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SizeOfGrid: 64
-  levelOfDetail: 1
+  SizeOfGrid: 128
+  levelOfDetail: 2
   AnimationCurve:
     serializedVersion: 2
     m_Curve:
