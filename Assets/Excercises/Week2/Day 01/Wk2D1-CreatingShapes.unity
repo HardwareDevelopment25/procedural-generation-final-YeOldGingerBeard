@@ -128,52 +128,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 753852303}
-  - component: {fileID: 753852302}
+  - component: {fileID: 753852304}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: CellAutoScript
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &753852302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 753852301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c11d6a518828194485f9233b54cb5d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SizeOfGrid: 64
-  levelOfDetail: 1
-  AnimationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!4 &753852303
 Transform:
   m_ObjectHideFlags: 0
@@ -183,12 +145,51 @@ Transform:
   m_GameObject: {fileID: 753852301}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.19253, y: 0, z: 23.60669}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &753852304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753852301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78365f0275c3e564e9a6cf9c88b9b421, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSize: 128
+  percentageOfOnes: 0.5
+  seed: 0
+  wall: {fileID: 4760749623462071611, guid: 9d39d8618d66eac4fa8293d2a9fc86bf, type: 3}
+  grass: {fileID: 5693854764005860727, guid: 96827767e035a3146a6a15501fb4736a, type: 3}
+  spikes: {fileID: 7999643528941742078, guid: 8ce22e44d64b17a4e9657fb3d519ea8f, type: 3}
+  planeRenderer: {fileID: 0}
+  speed: 0
+  smoothingIterations: 2
+  cellPrefab: {fileID: 505260073688669368, guid: 0862810ebd342b74b8ec8e54c29537ed, type: 3}
+  marchinSprites:
+  - {fileID: -52282521, guid: 2066cce7411a8a54e9f70566774ca688, type: 3}
+  - {fileID: 2144432505, guid: 2066cce7411a8a54e9f70566774ca688, type: 3}
+  - {fileID: 1336710932, guid: 2066cce7411a8a54e9f70566774ca688, type: 3}
+  - {fileID: 996453506, guid: 2066cce7411a8a54e9f70566774ca688, type: 3}
+  - {fileID: 608180097, guid: 2066cce7411a8a54e9f70566774ca688, type: 3}
+  - {fileID: 1096498472, guid: 2066cce7411a8a54e9f70566774ca688, type: 3}
+  - {fileID: 2059816291, guid: 2066cce7411a8a54e9f70566774ca688, type: 3}
+  - {fileID: 1409382366, guid: 2066cce7411a8a54e9f70566774ca688, type: 3}
+  - {fileID: -964137820, guid: 2066cce7411a8a54e9f70566774ca688, type: 3}
+  - {fileID: 215386828, guid: 2066cce7411a8a54e9f70566774ca688, type: 3}
+  - {fileID: -727610384, guid: 2066cce7411a8a54e9f70566774ca688, type: 3}
+  - {fileID: 2123712392, guid: 2066cce7411a8a54e9f70566774ca688, type: 3}
+  - {fileID: -830629655, guid: 2066cce7411a8a54e9f70566774ca688, type: 3}
+  - {fileID: -116892253, guid: 2066cce7411a8a54e9f70566774ca688, type: 3}
+  - {fileID: 1620989085, guid: 2066cce7411a8a54e9f70566774ca688, type: 3}
+  - {fileID: 1187260985, guid: 2066cce7411a8a54e9f70566774ca688, type: 3}
 --- !u!1 &1199797397
 GameObject:
   m_ObjectHideFlags: 0
